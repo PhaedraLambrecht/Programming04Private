@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include <SDL_ttf.h>
 #include <stdexcept>
+#include <iostream>
 
 
 namespace dae
@@ -15,6 +16,11 @@ namespace dae
 		,m_pFont{}
 		,m_pTexture{nullptr}
 	{
+	}
+
+	TextComponent::~TextComponent()
+	{
+		std::cout << "TextComponent\n";
 	}
 
 

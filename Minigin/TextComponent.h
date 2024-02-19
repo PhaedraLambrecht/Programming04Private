@@ -15,7 +15,7 @@ namespace dae
 	public:
 
 		TextComponent(GameObject* Owner);
-		~TextComponent() override = default;
+		~TextComponent() override;
 
 		// Copy and move
 		TextComponent(const TextComponent& other) = delete;

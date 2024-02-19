@@ -12,7 +12,7 @@ namespace dae
 	{
 	}
 
-	// todo: WTF is going wrong??????
+
 	ImageComponent::~ImageComponent()
 	{
 		std::cout << "ImageComponent\n";

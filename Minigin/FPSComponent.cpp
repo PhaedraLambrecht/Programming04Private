@@ -3,6 +3,7 @@
 #include "Time.h"
 #include "GameObject.h"
 #include <stdexcept>
+#include <iostream>
 
 
 namespace dae
@@ -16,8 +17,7 @@ namespace dae
 
 	FPSComponent::~FPSComponent()
 	{
-		delete m_pText;
-		m_pText = nullptr;
+		std::cout << "FPSComponent\n";
 	}
 
 
@@ -28,13 +28,10 @@ namespace dae
 			throw std::invalid_argument("FPSComponent needs a TextComponent");
 		}
 
-		float calculatedFPS = 1.0f / Time::GetInstance().GetDeltaTime();
+		m_fps =  1.0f / Time::GetInstance().GetDeltaTime();
 
-		if (calculatedFPS != m_fps)
-		{
-			m_fps = calculatedFPS;
-			std::string fpsText = std::to_string((int)m_fps) + "FPS"; // todo: Look into what caused the issue that this can't be in the line below.
-			m_pText->SetText(fpsText); 
-		}
+		std::string fpsText = std::to_string((int)m_fps) + "FPS"; // todo: Look into what caused the issue that this can't be in the line below.
+		m_pText->SetText(fpsText); 
+		
 	}
 }

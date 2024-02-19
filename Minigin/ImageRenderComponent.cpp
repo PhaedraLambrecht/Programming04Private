@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "GameObject.h"
 #include <stdexcept>
+#include <iostream>
 
 
 namespace dae
@@ -11,17 +12,13 @@ namespace dae
 	ImageRenderComponent::ImageRenderComponent(GameObject* Owner)
 		:BaseComponent(Owner)
 	{
-		m_pImage = GetOwner()->GetComponent<ImageComponent>();
-		m_pTransform = GetOwner()->GetComponent<TransformComponent>();
+		m_pImage = GetOwner()->AddComponent<ImageComponent>();
+		m_pTransform = GetOwner()->AddComponent<TransformComponent>();
 	}
 
 	ImageRenderComponent::~ImageRenderComponent()
 	{
-		delete m_pImage;
-		m_pImage = nullptr;
-
-		delete m_pTransform;
-		m_pTransform = nullptr;
+		std::cout << "ImageRenderComponent\n";
 	}
 
 

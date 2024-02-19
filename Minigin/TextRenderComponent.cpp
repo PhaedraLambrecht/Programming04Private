@@ -4,24 +4,20 @@
 #include "Renderer.h"
 #include "GameObject.h"
 #include <stdexcept>
-
+#include <iostream>
 
 namespace dae
 {
 	TextRenderComponent::TextRenderComponent(GameObject* Owner)
 		:BaseComponent(Owner)
 	{
-		m_pText = GetOwner()->GetComponent<TextComponent>();
-		m_pTransform = GetOwner()->GetComponent<TransformComponent>();
+		m_pText = GetOwner()->AddComponent<TextComponent>();
+		m_pTransform = GetOwner()->AddComponent<TransformComponent>();
 	}
 
 	TextRenderComponent::~TextRenderComponent()
 	{
-		delete m_pText;
-		m_pText = nullptr;
-
-		delete m_pTransform;
-		m_pTransform = nullptr;
+		std::cout << "TextRenderComponent\n";
 	}
 
 

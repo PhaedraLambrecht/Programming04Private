@@ -5,7 +5,7 @@
 
 dae::GameObject::GameObject()
 {
-	m_pTransform = std::make_unique<TransformComponent>(this);
+//	m_pTransform = std::make_unique<TransformComponent>(this);
 }
 
 dae::GameObject::~GameObject()

@@ -6,7 +6,7 @@ namespace dae
 	Time::Time()
 		:m_DeltaTime{}
 		,m_FrameRateCap{144}
-		,m_FixedTimeStep{0.001f}
+		,m_FixedTimeStep{0.01f}
 		,m_PreviousTime{ std::chrono::high_resolution_clock::now() }
 	{
 		m_MSPerFrame = 1000 / m_FrameRateCap;
