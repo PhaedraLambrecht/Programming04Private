@@ -6,18 +6,35 @@
 #include <stdexcept>
 #include <iostream>
 
+
 namespace dae
 {
 	TextRenderComponent::TextRenderComponent(GameObject* Owner)
 		:BaseComponent(Owner)
 	{
-		m_pText = GetOwner()->AddComponent<TextComponent>();
-		m_pTransform = GetOwner()->AddComponent<TransformComponent>();
+		if (GetOwner()->HasComponent<TextComponent>())
+		{
+			m_pText = GetOwner()->GetComponent<TextComponent>();
+		}
+		else
+		{
+			m_pText = GetOwner()->AddComponent<TextComponent>();
+		}
+	
+		if (GetOwner()->HasComponent<TransformComponent>())
+		{
+			m_pTransform = GetOwner()->GetComponent<TransformComponent>();
+		}
+		else
+		{
+			m_pTransform = nullptr;
+		}
 	}
 
 	TextRenderComponent::~TextRenderComponent()
 	{
 		std::cout << "TextRenderComponent\n";
+
 	}
 
 

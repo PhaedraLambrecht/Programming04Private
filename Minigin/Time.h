@@ -8,7 +8,7 @@ namespace dae
 	class Time : public Singleton<Time>
 	{
 	public:
-		
+
 		Time();
 		~Time() = default;
 
@@ -20,7 +20,7 @@ namespace dae
 
 
 
-		void Update(); 
+		void Update();
 		float GetDeltaTime() const;
 		float GetFixedTimeStep() const;
 		int GetMSPerFrame() const;
@@ -37,4 +37,3 @@ namespace dae
 
 	};
 }
-

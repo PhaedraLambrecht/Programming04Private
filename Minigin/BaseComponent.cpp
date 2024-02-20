@@ -13,9 +13,6 @@ namespace dae
 	BaseComponent::~BaseComponent()
 	{
 		std::cout << "BaseComponent\n";
-
-		//delete m_pOwner;
-		//m_pOwner = nullptr;
 	}
 
 

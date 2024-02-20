@@ -12,7 +12,14 @@ namespace dae
 		:BaseComponent(Owner)
 		,m_fps{}
 	{
-		m_pText = GetOwner()->GetComponent<TextComponent>();
+		if (GetOwner()->HasComponent<TextComponent>())
+		{
+			m_pText = GetOwner()->GetComponent<TextComponent>();
+		}
+		else
+		{
+			m_pText = GetOwner()->AddComponent<TextComponent>();
+		}
 	}
 
 	FPSComponent::~FPSComponent()

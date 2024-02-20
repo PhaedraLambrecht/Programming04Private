@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 
 namespace dae
@@ -31,7 +32,7 @@ namespace dae
 
 	private:
 
-		// todo: Do you need to be smart or is raw oke?
+		// todo: Can be a smart pointer --> Preferably a shared_ptr
 		GameObject* m_pOwner;
 	};
 }

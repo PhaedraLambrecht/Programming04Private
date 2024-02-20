@@ -12,8 +12,20 @@ namespace dae
 	ImageRenderComponent::ImageRenderComponent(GameObject* Owner)
 		:BaseComponent(Owner)
 	{
-		m_pImage = GetOwner()->AddComponent<ImageComponent>();
-		m_pTransform = GetOwner()->AddComponent<TransformComponent>();
+		if (GetOwner()->HasComponent<ImageComponent>())
+		{
+			m_pImage = GetOwner()->GetComponent<ImageComponent>();
+		}
+		else
+		{
+			m_pImage = GetOwner()->AddComponent<ImageComponent>();
+		}
+
+
+		if (GetOwner()->HasComponent<TransformComponent>())
+		{
+			m_pTransform = GetOwner()->GetComponent<TransformComponent>();
+		}
 	}
 
 	ImageRenderComponent::~ImageRenderComponent()

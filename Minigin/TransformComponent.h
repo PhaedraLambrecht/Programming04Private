@@ -21,7 +21,7 @@ namespace dae
 
 
 		const glm::vec3& GetPosition() const;
-		void SetPosition(float x, float y, float z); // todo: Does this need a z - and does it need to be v3?
+		void SetPosition(float x, float y, float z);
 
 
 	private:
