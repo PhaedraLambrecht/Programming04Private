@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
+#include <glm/glm.hpp>
 
 
 namespace dae
@@ -33,7 +34,7 @@ namespace dae
 		float m_RotationSpeed;
 		float m_Radius;
 		float m_CurrAngle;
-		
+
 		TransformComponent* m_pTransform;
 	};
 }

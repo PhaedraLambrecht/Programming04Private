@@ -51,7 +51,7 @@ namespace dae
 		}
 	
 		
-		const auto& position = m_pTransform->GetPosition();
+		const auto& position = m_pTransform->GetLocalPosition();
 		Renderer::GetInstance().RenderTexture(*m_pText->GetTexture(), position.x, position.y);
 	}
 }

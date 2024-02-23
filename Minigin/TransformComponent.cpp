@@ -1,4 +1,5 @@
 #include "TransformComponent.h"
+#include "GameObject.h"
 #include <iostream>
 
 
@@ -6,7 +7,9 @@ namespace dae
 {
 	TransformComponent::TransformComponent(GameObject* Owner)
 		:BaseComponent(Owner)
-		,m_Position{}
+		,m_LocalPosition{}
+		,m_WorldPosition{}
+		,m_IsDirty{false}
 	{
 	}
 
@@ -16,16 +19,53 @@ namespace dae
 	}
 
 
-	const glm::vec3& TransformComponent::GetPosition() const
+	const glm::vec2& TransformComponent::GetLocalPosition() const
 	{
-		return m_Position;
+		return m_LocalPosition;
+	}
+	
+	const glm::vec2& TransformComponent::GetWorldPosition()
+	{
+		if (m_IsDirty)
+		{
+			SetWorldPosition();
+		}
+		
+		return m_WorldPosition;
+	}
+	
+	void TransformComponent::SetLocalPosition(float x, float y)
+	{
+		m_LocalPosition.x = x;
+		m_LocalPosition.y = y;
+
+		UpdateDirtyFlag();
 	}
 
-	void TransformComponent::SetPosition(float x, float y, float z)
+	void TransformComponent::UpdateDirtyFlag()
 	{
-		m_Position.x = x;
-		m_Position.y = y;
-		m_Position.z = z;
+		m_IsDirty = true;
 	}
+
+	void TransformComponent::SetWorldPosition()
+	{
+		const auto pParent{ GetOwner()->GetParent()};
+
+
+		// If no parent exists, use the local position as world position
+		if (!pParent)
+		{
+			m_WorldPosition = m_LocalPosition;
+		}
+		else
+		{
+			// Calculate the world position using the position of the parent
+			const auto parentTransform{ pParent->GetTransform().GetWorldPosition() + m_LocalPosition};
+			m_WorldPosition = parentTransform;
+		}
+
+		m_IsDirty = false;
+	}
+
 }
 

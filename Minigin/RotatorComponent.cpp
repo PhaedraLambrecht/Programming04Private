@@ -35,11 +35,23 @@ namespace dae
 		auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime();
 		if (nextAngle != m_CurrAngle)
 		{
-			m_CurrAngle = nextAngle;
+		
 
-			const float x{ cosf(m_CurrAngle) * m_Radius };
-			const float y{ sinf(m_CurrAngle) * m_Radius };
-			m_pTransform->SetPosition(x, y, 0.0f);
+			if (GetOwner()->GetParent())
+			{
+				const float x{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().x + cosf(m_CurrAngle) * m_Radius };
+				const float y{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().y + sinf(m_CurrAngle) * m_Radius };
+				m_pTransform->SetLocalPosition(x, y);
+			}
+			else
+			{
+
+				const float x{ m_pTransform->GetLocalPosition().x + cosf(m_CurrAngle) * m_Radius };
+				const float y{ m_pTransform->GetLocalPosition().y + sinf(m_CurrAngle) * m_Radius };
+				m_pTransform->SetLocalPosition(x, y);
+			}
+			
+			m_CurrAngle = nextAngle;
 		}
 	}
 
@@ -52,4 +64,5 @@ namespace dae
 	{
 		m_Radius = radius;
 	}
+	
 }

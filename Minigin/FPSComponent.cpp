@@ -37,7 +37,7 @@ namespace dae
 
 		m_fps =  1.0f / Time::GetInstance().GetDeltaTime();
 
-		std::string fpsText = std::to_string((int)m_fps) + "FPS"; // todo: Look into what caused the issue that this can't be in the line below.
+		std::string fpsText = std::to_string((int)m_fps) + "FPS";
 		m_pText->SetText(fpsText); 
 		
 	}

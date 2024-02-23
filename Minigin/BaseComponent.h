@@ -32,8 +32,7 @@ namespace dae
 
 	private:
 
-		// todo: Can be a smart pointer --> Preferably a shared_ptr
-		GameObject* m_pOwner;
+		GameObject* m_pOwner; // Can be a smart pointer --> Preferably a shared_ptr
 	};
 }
 

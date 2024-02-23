@@ -33,12 +33,29 @@ namespace dae
 		template <typename T> bool HasComponent() const;
 		template <typename T> void RemoveComponent();
 
+		// Scenegraph
+		void SetParent(std::shared_ptr<GameObject> parent, bool keepWorldPos);
+		std::shared_ptr<GameObject> GetParent() const;
+
+		int GetChildCount() const;
+		GameObject* GetChildAt(int index) const;
+		std::vector<GameObject*> GetChildren() const;
+
+		TransformComponent& GetTransform() const;
+
 
 	private:
 
 		std::vector<std::unique_ptr<BaseComponent>> m_pComponents;
 		TransformComponent* m_pTransform;
 
+		// Scenegraph
+		std::vector<GameObject*> m_pChildren;
+		std::shared_ptr<GameObject> m_pParent;
+
+
+		void AddChild(GameObject* pChild);
+		void RemoveChild(GameObject* child);
 	};
 
 
@@ -82,7 +99,6 @@ namespace dae
 		return nullptr;
 	}
 
-
 	template<typename T>
 	inline bool GameObject::HasComponent() const
 	{
@@ -113,10 +129,5 @@ namespace dae
 		// Erase the removed components from the vector
 		m_pComponents.erase(it, m_pComponents.end());
 	}
-
-
-
-
-
 
 }
