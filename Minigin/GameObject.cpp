@@ -51,7 +51,7 @@ namespace dae
 											   m_pTransform->GetLocalPosition().y - parent->GetTransform().GetWorldPosition().y);
 			}
 
-			m_pTransform->UpdateDirtyFlag();
+			m_pTransform->UpdateDirtyFlag(true);
 		}
 
 

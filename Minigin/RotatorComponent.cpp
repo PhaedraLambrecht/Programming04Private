@@ -2,6 +2,8 @@
 #include "TransformComponent.h"
 #include "GameObject.h"
 #include "Time.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <iostream>
 
 
@@ -32,11 +34,14 @@ namespace dae
 
 	void RotatorComponent::Update()
 	{
-		auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime();
+		float pi{ float(M_PI) };
+		
+		auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime() / pi;
+		//auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime(); // This is extremely fast
 		if (nextAngle != m_CurrAngle)
 		{
-		
-
+			m_CurrAngle = nextAngle;
+			
 			if (GetOwner()->GetParent())
 			{
 				const float x{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().x + cosf(m_CurrAngle) * m_Radius };
@@ -50,9 +55,9 @@ namespace dae
 				const float y{ m_pTransform->GetLocalPosition().y + sinf(m_CurrAngle) * m_Radius };
 				m_pTransform->SetLocalPosition(x, y);
 			}
-			
-			m_CurrAngle = nextAngle;
+
 		}
+
 	}
 
 	void RotatorComponent::SetRotationpeed(float speed)

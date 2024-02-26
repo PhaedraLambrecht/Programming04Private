@@ -24,7 +24,7 @@ namespace dae
 		const glm::vec2& GetWorldPosition();
 		void SetLocalPosition(float x, float y);
 
-		void UpdateDirtyFlag();
+		void UpdateDirtyFlag(bool IsFlagged);
 
 
 	private:

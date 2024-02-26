@@ -18,6 +18,7 @@ namespace dae
 		const auto currentTime = std::chrono::high_resolution_clock::now();
 		m_DeltaTime = std::chrono::duration<float>(currentTime - m_PreviousTime).count();
 
+
 		m_PreviousTime = currentTime;
 	}
 

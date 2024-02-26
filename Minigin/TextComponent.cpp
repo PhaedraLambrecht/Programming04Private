@@ -52,7 +52,6 @@ namespace dae
 		const auto surf = TTF_RenderText_Blended(m_pFont->GetFont(), m_Text.c_str(), m_Color);
 		if (!surf)
 		{
-			// todo: is this oke or no?
 			throw std::runtime_error(std::string("Render text failed: ") + SDL_GetError());
 		}
 
