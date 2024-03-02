@@ -39,10 +39,10 @@ namespace dae
 		m_LocalPosition.x = x;
 		m_LocalPosition.y = y;
 
-		UpdateDirtyFlag(true);
+		SwitchDirtyFlag(true);
 	}
 
-	void TransformComponent::UpdateDirtyFlag(bool IsFlagged)
+	void TransformComponent::SwitchDirtyFlag(bool IsFlagged)
 	{
 		m_IsDirty = IsFlagged;
 	}
@@ -64,7 +64,7 @@ namespace dae
 			m_WorldPosition = parentTransform;
 		}
 
-		UpdateDirtyFlag(false);
+		SwitchDirtyFlag(false);
 	}
 
 }

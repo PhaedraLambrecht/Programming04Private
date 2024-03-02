@@ -45,13 +45,31 @@ namespace dae
 		}
 		else
 		{
+			// Is the parent the same as this object?
+			if (parent.get() == this)
+			{
+				throw std::invalid_argument("Parent cant be the same as the object it is set to");
+
+			}
+			
+			// Is the new parent an alrady existing child to this object?
+			for (int i{ 0 }; i < GetChildCount(); ++i)
+			{
+				if (GetChildAt(i) == parent.get()) 
+				{
+					throw std::invalid_argument("Parent cant be a previous child");
+				}
+			}
+
+
+			// If neither of the above 2, set the transform
 			if (keepWorldPos)
 			{
 				m_pTransform->SetLocalPosition(m_pTransform->GetLocalPosition().x - parent->GetTransform().GetWorldPosition().x,
 											   m_pTransform->GetLocalPosition().y - parent->GetTransform().GetWorldPosition().y);
 			}
 
-			m_pTransform->UpdateDirtyFlag(true);
+			m_pTransform->SwitchDirtyFlag(true);
 		}
 
 

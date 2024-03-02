@@ -37,20 +37,20 @@ namespace dae
 		float pi{ float(M_PI) };
 		
 		auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime() / pi;
-		//auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime(); // This is extremely fast
 		if (nextAngle != m_CurrAngle)
 		{
 			m_CurrAngle = nextAngle;
 			
 			if (GetOwner()->GetParent())
 			{
+				// If you have a parent, take their worldposition add the angle multiplied by the radius
 				const float x{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().x + cosf(m_CurrAngle) * m_Radius };
 				const float y{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().y + sinf(m_CurrAngle) * m_Radius };
 				m_pTransform->SetLocalPosition(x, y);
 			}
 			else
 			{
-
+				// otherwise, get your position 
 				const float x{ m_pTransform->GetLocalPosition().x + cosf(m_CurrAngle) * m_Radius };
 				const float y{ m_pTransform->GetLocalPosition().y + sinf(m_CurrAngle) * m_Radius };
 				m_pTransform->SetLocalPosition(x, y);
