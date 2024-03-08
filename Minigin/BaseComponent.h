@@ -21,6 +21,9 @@ namespace dae
 
 
 		virtual void Render() const;
+		virtual void RenderUI();
+
+		virtual void FixedUpdate(const float fixedTimeStep);
 		virtual void Update();
 
 

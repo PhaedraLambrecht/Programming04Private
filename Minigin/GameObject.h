@@ -26,6 +26,7 @@ namespace dae
 
 
 		void Update();
+		void FixedUpdate(const float fixedTimeStep);
 		void Render() const;
 
 		template <typename T> T* AddComponent();
@@ -34,8 +35,8 @@ namespace dae
 		template <typename T> void RemoveComponent();
 
 		// Scenegraph
-		void SetParent(std::shared_ptr<GameObject> parent, bool keepWorldPos);
-		std::shared_ptr<GameObject> GetParent() const;
+		void SetParent(GameObject* parent, bool keepWorldPos);
+		GameObject* GetParent() const;
 
 		int GetChildCount() const;
 		GameObject* GetChildAt(int index) const;
@@ -51,8 +52,8 @@ namespace dae
 
 		// Scenegraph
 		std::vector<GameObject*> m_pChildren;
-		std::shared_ptr<GameObject> m_pParent;
-
+		GameObject* m_pParent;
+	
 
 		void AddChild(GameObject* pChild);
 		void RemoveChild(GameObject* child);

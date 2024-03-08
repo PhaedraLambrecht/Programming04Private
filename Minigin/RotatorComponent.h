@@ -23,7 +23,7 @@ namespace dae
 
 
 
-		void Update() override;
+		void FixedUpdate(const float fixedTimeStep) override;
 
 		void SetRotationpeed(float speed);
 		void setRadius(float radius);

@@ -101,7 +101,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 		while (lag >= Time::GetInstance().GetFixedTimeStep())
 		{
-			// fixedUpdate(Time::GetInstance().GetFixedTimeStep());
+			sceneManager.FixedUpdate(Time::GetInstance().GetFixedTimeStep());
 			lag -= Time::GetInstance().GetFixedTimeStep();
 
 		}
@@ -113,4 +113,9 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		const auto sleepTime = Time::GetInstance().GetPreviousTime() + std::chrono::milliseconds(Time::GetInstance().GetMSPerFrame()) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(sleepTime);
 	}
+}
+
+SDL_Window* dae::Minigin::GetWindow()
+{
+	return m_window;
 }

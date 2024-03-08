@@ -32,20 +32,30 @@ namespace dae
 	}
 
 
-	void RotatorComponent::Update()
+	void RotatorComponent::FixedUpdate(const float fixedTimeStep)
 	{
 		float pi{ float(M_PI) };
-		
-		auto nextAngle = m_CurrAngle + m_RotationSpeed * Time::GetInstance().GetDeltaTime() / pi;
+
+		auto nextAngle = m_CurrAngle + m_RotationSpeed * (fixedTimeStep /  2);
+		if (nextAngle > 2 * pi)
+		{
+			nextAngle -= 2 * pi;
+		}
+		else if (nextAngle < 2 * pi)
+		{
+			nextAngle += 2 * pi;
+		}
+
+
 		if (nextAngle != m_CurrAngle)
 		{
 			m_CurrAngle = nextAngle;
-			
+
 			if (GetOwner()->GetParent())
 			{
 				// If you have a parent, take their worldposition add the angle multiplied by the radius
-				const float x{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().x + cosf(m_CurrAngle) * m_Radius };
-				const float y{ GetOwner()->GetParent().get()->GetTransform().GetWorldPosition().y + sinf(m_CurrAngle) * m_Radius };
+				const float x{ GetOwner()->GetParent()->GetTransform().GetWorldPosition().x + cosf(m_CurrAngle) * m_Radius };
+				const float y{ GetOwner()->GetParent()->GetTransform().GetWorldPosition().y + sinf(m_CurrAngle) * m_Radius };
 				m_pTransform->SetLocalPosition(x, y);
 			}
 			else
@@ -57,7 +67,6 @@ namespace dae
 			}
 
 		}
-
 	}
 
 	void RotatorComponent::SetRotationpeed(float speed)

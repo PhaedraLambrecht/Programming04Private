@@ -132,6 +132,9 @@
     <ClInclude Include="..\3rdParty\imgui\backends\imgui_impl_opengl2.h">
       <Filter>Header Files\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="CacheComponent.h">
+      <Filter>Header Files\Components\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ResourceManager.cpp">
@@ -217,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="..\3rdParty\imgui\backends\imgui_impl_opengl2.cpp">
       <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="CacheComponent.cpp">
+      <Filter>Source Files\Components\Data</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

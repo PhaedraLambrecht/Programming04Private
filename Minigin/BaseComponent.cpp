@@ -25,6 +25,15 @@ namespace dae
 	{
 	}
 
+	void BaseComponent::RenderUI()
+	{
+	}
+
+	void BaseComponent::FixedUpdate(const float)
+	{
+
+	}
+
 	void BaseComponent::Update()
 	{
 	}

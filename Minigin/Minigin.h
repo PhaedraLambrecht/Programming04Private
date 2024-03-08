@@ -17,6 +17,9 @@ namespace dae
 		Minigin& operator=(Minigin&& other) = delete;
 
 
+
+		SDL_Window* GetWindow();
+
 	private:
 
 		SDL_Window* m_window{};

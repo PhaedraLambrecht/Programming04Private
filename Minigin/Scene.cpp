@@ -34,6 +34,14 @@ void Scene::Update()
 	}
 }
 
+void dae::Scene::FixedUpdate(const float fixedTimeStep)
+{
+	for (auto& object : m_objects)
+	{
+		object->FixedUpdate(fixedTimeStep);
+	}
+}
+
 void Scene::Render() const
 {
 	for (const auto& object : m_objects)

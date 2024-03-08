@@ -7,6 +7,8 @@
 namespace dae
 {
 	GameObject::GameObject()
+		:m_pChildren{}
+		,m_pParent{}
 	{
 		m_pTransform = AddComponent<TransformComponent>();
 	}
@@ -26,15 +28,24 @@ namespace dae
 		}
 	}
 
+	void GameObject::FixedUpdate(const float fixedTimeStep)
+	{		
+		for (const auto& component : m_pComponents)
+		{
+			component->FixedUpdate(fixedTimeStep);
+		}
+	}
+
 	void GameObject::Render() const
 	{
 		for (const auto& component : m_pComponents)
 		{
 			component->Render();
+			component->RenderUI();
 		}
 	}
 
-	void GameObject::SetParent(std::shared_ptr<GameObject> parent, bool keepWorldPos)
+	void GameObject::SetParent(GameObject* parent, bool keepWorldPos)
 	{
 		if (!parent)
 		{
@@ -46,7 +57,7 @@ namespace dae
 		else
 		{
 			// Is the parent the same as this object?
-			if (parent.get() == this)
+			if (parent == this)
 			{
 				throw std::invalid_argument("Parent cant be the same as the object it is set to");
 
@@ -55,7 +66,7 @@ namespace dae
 			// Is the new parent an alrady existing child to this object?
 			for (int i{ 0 }; i < GetChildCount(); ++i)
 			{
-				if (GetChildAt(i) == parent.get()) 
+				if (GetChildAt(i) == parent) 
 				{
 					throw std::invalid_argument("Parent cant be a previous child");
 				}
@@ -73,7 +84,8 @@ namespace dae
 		}
 
 
-		if (m_pParent)
+
+		if (m_pParent != nullptr)
 		{
 			m_pParent->RemoveChild( this );
 		}
@@ -86,7 +98,7 @@ namespace dae
 		}
 	}
 
-	std::shared_ptr<GameObject> GameObject::GetParent() const
+	GameObject* GameObject::GetParent() const
 	{
 		return m_pParent;
 	}
