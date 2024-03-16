@@ -1,5 +1,4 @@
 #include "CacheComponent.h"
-#include "Renderer.h"
 #include <algorithm>
 #include <numeric>
 #include <chrono>
@@ -22,42 +21,18 @@ namespace dae
 		,m_color1{ 255, 165, 0 }
 		,m_color2{ 0, 165, 255 }
 	{
-		m_Window = Renderer::GetInstance().GetWindow();
-	
-		// Innitializing the ImGui
-		IMGUI_CHECKVERSION();
-		ImGui::CreateContext();
-		ImGui_ImplSDL2_InitForOpenGL(m_Window, SDL_GL_GetCurrentContext());
-		ImGui_ImplOpenGL2_Init();
 	}
 
 	CacheComponent::~CacheComponent()
 	{
 		std::cout << "CacheComponent\n";
-
-
-		ImGui_ImplOpenGL2_Shutdown();
-		ImGui_ImplSDL2_Shutdown();
-		ImGui::DestroyContext();
 	}
 
 
 	void CacheComponent::RenderUI()
 	{
-		// 1) Make an empty buffer
-		ImGui_ImplOpenGL2_NewFrame();
-		ImGui_ImplSDL2_NewFrame(m_Window);
-		ImGui::NewFrame();
-
-
 		RenderExcersize1();
 		RenderExcersize2();
-
-
-		//3) Swap the buffer so it is shown
-		ImGui::Render();
-		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
-
 	}
 
 	void CacheComponent::PlottingData(std::vector<float> data, ImColor color)

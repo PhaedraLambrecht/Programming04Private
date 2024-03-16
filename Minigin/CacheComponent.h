@@ -3,7 +3,6 @@
 #include "imgui_plot.h"
 #include <vector>
 #include <map>
-#include <SDL.h>
 
 
 namespace dae
@@ -28,8 +27,6 @@ namespace dae
 
 
 	private:
-
-		SDL_Window* m_Window;
 
 		std::vector<float> m_StepsInfo;
 		const int m_ContainerSize;

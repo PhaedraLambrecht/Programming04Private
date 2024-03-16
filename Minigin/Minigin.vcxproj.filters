@@ -43,6 +43,18 @@
     <Filter Include="Source Files\imgui">
       <UniqueIdentifier>{35518b41-c8f2-4b75-82c2-6ad6976d13f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{de2c2109-de90-455a-b5bd-6906a5b0ba2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{fd242fc3-623b-4bfb-9755-a7d5c044c919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{4f55bfdc-a1c9-4095-a8a1-8527743d23cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{f0ad0d7d-8e71-4d28-a801-64d0cde0a8ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
@@ -55,9 +67,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
@@ -135,6 +144,21 @@
     <ClInclude Include="CacheComponent.h">
       <Filter>Header Files\Components\Data</Filter>
     </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ResourceManager.cpp">
@@ -144,9 +168,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
@@ -224,5 +245,22 @@
     <ClCompile Include="CacheComponent.cpp">
       <Filter>Source Files\Components\Data</Filter>
     </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Minigin.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

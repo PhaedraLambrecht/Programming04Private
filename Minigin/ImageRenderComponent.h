@@ -14,7 +14,6 @@ namespace dae
 		ImageRenderComponent(GameObject* Owner);
 		~ImageRenderComponent() override;
 
-		// Copy and move
 		ImageRenderComponent(const ImageRenderComponent& other) = delete;
 		ImageRenderComponent(ImageRenderComponent&& other) = delete;
 		ImageRenderComponent& operator=(const ImageRenderComponent& other) = delete;
