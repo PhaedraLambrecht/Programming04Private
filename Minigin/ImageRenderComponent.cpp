@@ -21,10 +21,13 @@ namespace dae
 			m_pImage = GetOwner()->AddComponent<ImageComponent>();
 		}
 
-
 		if (GetOwner()->HasComponent<TransformComponent>())
 		{
 			m_pTransform = GetOwner()->GetComponent<TransformComponent>();
+		}
+		else
+		{
+			m_pTransform = nullptr;
 		}
 	}
 

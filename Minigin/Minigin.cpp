@@ -14,6 +14,8 @@
 #include <chrono>
 #include <thread>
 
+#include "EventManager.h"
+
 
 void PrintSDLVersion()
 {
@@ -86,6 +88,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 	auto& sceneManager = SceneManager::GetInstance();
 	auto& input = InputManager::GetInstance();
 
+	auto& eventHandler = EventManager::GetInstance();
 
 
 	bool doContinue = true;
@@ -98,6 +101,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 
 		doContinue = input.ProcessInput();
+		eventHandler.HandleEvents();
 
 		while (lag >= Time::GetInstance().GetFixedTimeStep())
 		{

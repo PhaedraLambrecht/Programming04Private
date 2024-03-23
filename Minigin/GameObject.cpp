@@ -15,7 +15,7 @@ namespace dae
 
 	GameObject::~GameObject()
 	{
-		std::cout << "\nGameObject\n";
+		std::cout << "\n------ GameObject ------\n";
 	}
 
 

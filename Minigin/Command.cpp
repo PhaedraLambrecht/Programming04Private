@@ -1,13 +1,7 @@
 #include "Command.h"
-#include "GameObject.h"
+#include <iostream>
 
-
-dae::Command::Command(GameObject* pActor)
-	:m_pActor{pActor}
+dae::BaseCommand::~BaseCommand()
 {
-}
-
-dae::GameObject* dae::Command::GetActor() const
-{
-	return m_pActor;
+	std::cout << "BaseCommand\n";
 }

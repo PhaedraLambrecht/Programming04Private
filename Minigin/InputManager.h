@@ -129,7 +129,7 @@ namespace dae
 	public:
 
 		InputManager() = default;
-		~InputManager() override;
+		virtual ~InputManager() override;
 
 		InputManager(const InputManager& other) = delete;
 		InputManager(InputManager&& other) = delete;
@@ -148,10 +148,11 @@ namespace dae
 
 
 	private:
+		
 
 		//keep track of all buttons with commands 
-		using ControllerCommandsMap = std::map<ControllerInput, std::unique_ptr<Command>>;
-		using KeyboardCommandsMap = std::map<KeyboardInput, std::unique_ptr<Command>>;
+		using ControllerCommandsMap = std::map<ControllerInput, std::unique_ptr<BaseCommand>>;
+		using KeyboardCommandsMap = std::map<KeyboardInput, std::unique_ptr<BaseCommand>>;
 
 
 		
@@ -175,8 +176,13 @@ namespace dae
 	template<typename T>
 	inline T* InputManager::AddControllerCommand(std::unique_ptr<T> command, ControllerInput input)
 	{
-		static_assert(std::is_base_of<Command, T>::value, "T must inherit from Command");
+		static_assert(std::is_base_of<BaseCommand, T>::value && "T must inherit from BaseCommand");
 
+
+		while (input.controllerIndex >= m_Controllers.size())
+		{
+			AddController();
+		}
 
 		// Get the raw pointer from command
 		T* commandPtr = command.get(); 
@@ -189,7 +195,7 @@ namespace dae
 	template<typename T>
 	inline T* InputManager::AddKeyboardCommand(std::unique_ptr<T> command, KeyboardInput input)
 	{
-		static_assert(std::is_base_of<Command, T>::value && "T must inherit from Command");
+		static_assert(std::is_base_of<BaseCommand, T>::value && "T must inherit from BaseCommand");
 
 		// Get the raw pointer from command
 		T* toReturn = command.get();

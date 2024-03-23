@@ -34,7 +34,6 @@ namespace dae
 	TextRenderComponent::~TextRenderComponent()
 	{
 		std::cout << "TextRenderComponent\n";
-
 	}
 
 

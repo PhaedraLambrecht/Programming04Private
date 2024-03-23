@@ -2,31 +2,23 @@
 
 namespace dae
 {
-	class GameObject;
-
-	class Command
+	class BaseCommand
 	{
 	public:
 
-		explicit Command(GameObject* pActor);
-		virtual ~Command() = default;
+		explicit BaseCommand() = default;
+	//	virtual ~BaseCommand() = default;
+		virtual ~BaseCommand();
 
-		Command(const Command& other) = delete;
-		Command(Command&& other) = delete;
-		Command& operator=(const Command& other) = delete;
-		Command& operator=(Command&& other) = delete;
+		BaseCommand(const BaseCommand& other) = delete;
+		BaseCommand(BaseCommand&& other) = delete;
+		BaseCommand& operator=(const BaseCommand& other) = delete;
+		BaseCommand& operator=(BaseCommand&& other) = delete;
 
 
 
 
 		virtual void Execute() = 0;
-		GameObject* GetActor() const;
-
-
-	private:
-
-		GameObject* m_pActor;
-
 	};
 
 }

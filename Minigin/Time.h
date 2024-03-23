@@ -5,12 +5,12 @@
 
 namespace dae
 {
-	class Time : public Singleton<Time>
+	class Time final: public Singleton<Time>
 	{
 	public:
 
 		Time();
-		~Time() = default;
+		virtual ~Time() = default;
 
 		// Copy and move
 		Time(const Time& other) = delete;
