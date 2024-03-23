@@ -230,6 +230,7 @@ xcopy $(SolutionDir)3rdParty\Steamworks\steam_appid.txt $(OutputPath) /R /Y
     <ClInclude Include="..\3rdParty\imgui\imstb_rectpack.h" />
     <ClInclude Include="..\3rdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="..\3rdParty\imgui\imstb_truetype.h" />
+    <ClInclude Include="Achievements.h" />
     <ClInclude Include="AddPointsCommand.h" />
     <ClInclude Include="AddPointsComponnent.h" />
     <ClInclude Include="BaseComponent.h" />
@@ -274,6 +275,7 @@ xcopy $(SolutionDir)3rdParty\Steamworks\steam_appid.txt $(OutputPath) /R /Y
     <ClCompile Include="..\3rdParty\imgui\imgui_plot.cpp" />
     <ClCompile Include="..\3rdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\3rdParty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Achievements.cpp" />
     <ClCompile Include="AddPointsCommand.cpp" />
     <ClCompile Include="AddPointsComponnent.cpp" />
     <ClCompile Include="BaseComponent.cpp" />

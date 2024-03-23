@@ -3,7 +3,7 @@
 #include "EventManager.h"
 #include "Event.h"
 #include "GameObject.h"
-#include <memory>
+#include "Achievements.h"
 #include <stdexcept>
 #include <iostream>
 
@@ -12,6 +12,7 @@ dae::ScoreComponent::ScoreComponent(GameObject* owner)
 	, m_RewardAmount{100}
 	,m_PointsEarned{0}
 	,m_PlayerIndex{0}
+	,m_AchievementPoints{1000}
 {
 
 	if (GetOwner()->HasComponent<TextComponent>())
@@ -49,6 +50,11 @@ void dae::ScoreComponent::SetPlayerIndex(unsigned playerIndex)
 	m_PlayerIndex = playerIndex;
 }
 
+void dae::ScoreComponent::LinkAchievements(const std::shared_ptr<Achievements>& gameAchievements)
+{
+	m_GameAchievements = gameAchievements;
+}
+
 void dae::ScoreComponent::UpdateText()
 {
 	std::string text = "Player: " + std::to_string(m_PlayerIndex) + " - score: " + std::to_string(m_PointsEarned);
@@ -65,6 +71,22 @@ void dae::ScoreComponent::UpdateScore(const Event* e)
 			m_PointsEarned += m_RewardAmount;
 			UpdateText();
 		
+		}
+	}
+
+	CheckForAchievements();
+}
+
+void dae::ScoreComponent::CheckForAchievements()
+{
+	if (m_AchievementPoints <= m_PointsEarned)
+	{
+		bool hasAchieved;
+
+		m_GameAchievements->HasReceivedAchievement(hasAchieved);
+		if (!hasAchieved)
+		{
+			m_GameAchievements->SetAchievement();
 		}
 	}
 }
