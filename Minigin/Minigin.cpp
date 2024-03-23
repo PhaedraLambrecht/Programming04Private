@@ -16,6 +16,9 @@
 
 #include "EventManager.h"
 
+// STEAM
+#include <steam_api_common.h>
+
 
 void PrintSDLVersion()
 {
@@ -90,7 +93,6 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 	auto& eventHandler = EventManager::GetInstance();
 
-
 	bool doContinue = true;
 	float lag{ 0.0f };
 
@@ -110,6 +112,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 		}
 
+		SteamAPI_RunCallbacks();
 		sceneManager.Update();
 		renderer.Render();
 

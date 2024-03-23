@@ -9,7 +9,7 @@ dae::InputManager::~InputManager()
 	std::cout << "InputManager" << '\n';
 
 
-	for (int i{}; i < m_Controllers.size(); ++i)
+	for (int i{}; i < int(m_Controllers.size()); ++i)
 	{
 		delete m_Controllers[i];
 		m_Controllers[i] = nullptr;
