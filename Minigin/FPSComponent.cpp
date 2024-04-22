@@ -1,6 +1,6 @@
 #include "FPSComponent.h"
 #include "TextComponent.h"
-#include "Time.h"
+#include "GameTime.h"
 #include "GameObject.h"
 #include <stdexcept>
 #include <iostream>
@@ -35,7 +35,7 @@ namespace dae
 			throw std::invalid_argument("FPSComponent needs a TextComponent");
 		}
 
-		float newFPS =  1.0f / Time::GetInstance().GetDeltaTime();
+		float newFPS =  1.0f / GameTime::GetInstance().GetDeltaTime();
 
 
 		if (newFPS != m_fps)

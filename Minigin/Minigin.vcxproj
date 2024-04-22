@@ -228,7 +228,7 @@
     <ClInclude Include="TextComponent.h" />
     <ClInclude Include="TextRenderComponent.h" />
     <ClInclude Include="Texture2D.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="GameTime.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>

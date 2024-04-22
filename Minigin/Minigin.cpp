@@ -10,7 +10,7 @@
 #include "Renderer.h"
 #include "ResourceManager.h"
 
-#include "Time.h"
+#include "GameTime.h"
 #include <chrono>
 #include <thread>
 
@@ -96,17 +96,17 @@ void dae::Minigin::Run(const std::function<void()>& load)
 
 	while (doContinue)
 	{
-		Time::GetInstance().Update();
-		lag += Time::GetInstance().GetDeltaTime();
+		GameTime::GetInstance().Update();
+		lag += GameTime::GetInstance().GetDeltaTime();
 
 
 		doContinue = input.ProcessInput();
 		eventHandler.HandleEvents();
 
-		while (lag >= Time::GetInstance().GetFixedTimeStep())
+		while (lag >= GameTime::GetInstance().GetFixedTimeStep())
 		{
-			sceneManager.FixedUpdate(Time::GetInstance().GetFixedTimeStep());
-			lag -= Time::GetInstance().GetFixedTimeStep();
+			sceneManager.FixedUpdate(GameTime::GetInstance().GetFixedTimeStep());
+			lag -= GameTime::GetInstance().GetFixedTimeStep();
 
 		}
 
@@ -114,7 +114,7 @@ void dae::Minigin::Run(const std::function<void()>& load)
 		renderer.Render();
 
 
-		const auto sleepTime = Time::GetInstance().GetPreviousTime() + std::chrono::milliseconds(Time::GetInstance().GetMSPerFrame()) - std::chrono::high_resolution_clock::now();
+		const auto sleepTime = GameTime::GetInstance().GetPreviousTime() + std::chrono::milliseconds(GameTime::GetInstance().GetMSPerFrame()) - std::chrono::high_resolution_clock::now();
 		std::this_thread::sleep_for(sleepTime);
 	}
 }

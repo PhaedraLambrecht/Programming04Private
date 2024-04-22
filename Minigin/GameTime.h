@@ -5,18 +5,18 @@
 
 namespace dae
 {
-	class Time final: public Singleton<Time>
+	class GameTime final: public Singleton<GameTime>
 	{
 	public:
 
-		Time();
-		virtual ~Time() = default;
+		GameTime();
+		virtual ~GameTime() = default;
 
 		// Copy and move
-		Time(const Time& other) = delete;
-		Time(Time&& other) = delete;
-		Time& operator=(const Time& other) = delete;	
-		Time& operator=(Time&& other) = delete;
+		GameTime(const GameTime& other) = delete;
+		GameTime(GameTime&& other) = delete;
+		GameTime& operator=(const GameTime& other) = delete;	
+		GameTime& operator=(GameTime&& other) = delete;
 
 
 

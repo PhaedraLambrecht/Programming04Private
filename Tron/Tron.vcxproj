@@ -110,12 +110,7 @@
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>xinput.lib;Minigin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy $(SolutionDir)\3rdParty\SDL2\lib\x86\SDL2.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_image\lib\x86\SDL2_image.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_ttf\lib\x86\SDL2_ttf.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x86\SDL2_mixer.dll $(OutputPath) /R /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,12 +132,7 @@ xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x86\SDL2_mixer.dll $(OutputPath) /R
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy $(SolutionDir)\3rdParty\SDL2\lib\x86\SDL2.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_image\lib\x86\SDL2_image.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_ttf\lib\x86\SDL2_ttf.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x86\SDL2_mixer.dll $(OutputPath) /R /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -160,12 +150,7 @@ xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x86\SDL2_mixer.dll $(OutputPath) /R
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy $(SolutionDir)\3rdParty\SDL2\lib\x64\SDL2.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_image\lib\x64\SDL2_image.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x64\SDL2_mixer.dll $(OutputPath) /R /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -187,12 +172,7 @@ xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x64\SDL2_mixer.dll $(OutputPath) /R
       <AdditionalLibraryDirectories>$(OutputPath);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Minigin.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy $(SolutionDir)\3rdParty\SDL2\lib\x64\SDL2.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_image\lib\x64\SDL2_image.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_ttf\lib\x64\SDL2_ttf.dll $(OutputPath) /R /Y
-xcopy $(SolutionDir)\3rdParty\SDL2_mixer\lib\x64\SDL2_mixer.dll $(OutputPath) /R /Y</Command>
-    </PostBuildEvent>
+    <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Minigin\Main.cpp" />

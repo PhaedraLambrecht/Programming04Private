@@ -1,9 +1,9 @@
-#include "Time.h"
+#include "GameTime.h"
 
 
 namespace dae
 {
-	Time::Time()
+	GameTime::GameTime()
 		:m_DeltaTime{}
 		, m_FrameRateCap{ 60 }
 		, m_FixedTimeStep{ 0.01f }
@@ -13,7 +13,7 @@ namespace dae
 	}
 
 
-	void Time::Update()
+	void GameTime::Update()
 	{
 		const auto currentTime = std::chrono::high_resolution_clock::now();
 		m_DeltaTime = std::chrono::duration<float>(currentTime - m_PreviousTime).count();
@@ -22,22 +22,22 @@ namespace dae
 		m_PreviousTime = currentTime;
 	}
 
-	float Time::GetDeltaTime() const
+	float GameTime::GetDeltaTime() const
 	{
 		return m_DeltaTime;
 	}
 
-	float Time::GetFixedTimeStep() const
+	float GameTime::GetFixedTimeStep() const
 	{
 		return m_FixedTimeStep;
 	}
 
-	int Time::GetMSPerFrame() const
+	int GameTime::GetMSPerFrame() const
 	{
 		return m_MSPerFrame;
 	}
 
-	std::chrono::time_point<std::chrono::steady_clock> Time::GetPreviousTime() const
+	std::chrono::time_point<std::chrono::steady_clock> GameTime::GetPreviousTime() const
 	{
 		return m_PreviousTime;
 	}

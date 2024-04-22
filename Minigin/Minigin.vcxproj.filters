@@ -126,7 +126,7 @@
     <ClInclude Include="TextRenderComponent.h">
       <Filter>Header Files\Components\Render</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="GameTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RotatorComponent.h">
